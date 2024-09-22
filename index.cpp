@@ -1,38 +1,37 @@
 #include <iostream>
+#include <string> 
 
 using namespace std;
 
 int main() {
-    cout << "-------Please guess the number between 0 and 10----------" << endl;
-    cout << "-------You have 5 chances to guess the correct number------------" << endl;
+    double number1;
+    double number2;
+    string SIGN; // Declare SIGN as a string
 
-
-
-    int answer = 5; // The number to guess
-    int guess; // Variable to store user's guess
-    int health = 0; // Count the number of attempts
-    int chances = 5; // Total allowed chances are 5
-    bool gameover = false; // Game state(bool is used to store the value of TRUE and FALSE.)
-
-    while (health < chances && !gameover) {
-        cout << "ENTER YOUR NUMBER:-------- ";
-        cin >> guess; // Get user input
-        health++; // Increment the number of attempts
-
-        if (guess == answer) {
-            cout << "YOU WON!" << endl;
-            gameover = true; // End the game
+    cout << "ENTER YOUR 1ST NUMBER: ";
+    cin >> number1;
+    
+    cout << "ENTER YOUR OPERATOR: ";
+    cin >> SIGN;
+    
+    cout << "ENTER YOUR 2ND NUMBER: ";
+    cin >> number2;
+    
+    // Operator input for two given numbers
+    if(SIGN == "+") {
+        cout << "Result: " << number1 + number2 << endl;
+    } else if (SIGN == "-") {
+        cout << "Result: " << number1 - number2 << endl;
+    } else if (SIGN == "*") {
+        cout << "Result: " << number1 * number2 << endl;
+    } else if (SIGN == "/") {
+        if (number2 != 0) {
+            cout << "Result: " << number1 / number2 << endl;
         } else {
-            if (guess < answer) {
-                cout << "Your guess is too low! Try again." << endl;
-            } else {
-                cout << "Your guess is too high! Try again." << endl;
-            }
+            cout << "Error: Division by zero!" << endl;
         }
-    }
-
-    if (!gameover) {
-        cout << "YOU LOST! The correct number was " << answer << "." << endl;
+    } else {
+        cout << "Error: Invalid operator!" << endl;
     }
 
     return 0;
